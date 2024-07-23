@@ -15,6 +15,10 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
+    email:{
+        type:String,
+        required:true
+    },
     phone:{
         type:Number,
         required:true
@@ -26,6 +30,10 @@ const userSchema = new Schema({
     role:{
         type:String,
         enum:["admin", "user"],
+        default:"user",
         required:true
     },
 });
+
+const User = mongoose.model("User", userSchema);
+module.exports = User;

@@ -70,11 +70,15 @@
 
 const express = require("express");
 const app  = express();
+require('dotenv').config();
 const connectDB = require("./src/config/db");
+const userRoute = require("./src/Routes/userRoutes")
 app.use(express.json());
-const port = 5000;
+const port = process.env.port;
 //used to connect to db
 connectDB();
+app.use('/user',userRoute)
+
   app.listen(port, ()=>{
         console.log(`Server is running on ${port}`)
-    })
+    });
